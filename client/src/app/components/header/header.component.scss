@@ -1,0 +1,23 @@
+@import "../../../assets/scss/index";
+
+header {
+  @include displayFlex();
+  justify-content: space-between;
+  padding: 1em;
+  height: 100px;
+  background-color: rgb(231, 227, 233);
+  nav {
+    @include displayFlex();
+    width: 50%;
+    list-style: none;
+    li {
+      padding: 0.5em;
+      border: 3px solid red;
+      border-radius: 30px;
+    }
+  }
+}
+
+.active {
+  color: rgb(226, 52, 40);
+}

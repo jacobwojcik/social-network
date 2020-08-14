@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+@import "./assets/scss/index";
+//GLOBAL STYLES
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Acme", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+form {
+  @include displayFlex();
+  flex-flow: column;
+  border: 2px solid grey;
+  min-height: 50%;
+  max-height: 80%;
+  padding: 1em;
+  input {
+    padding: 0.5em;
+    font-size: 25px;
+  }
+}

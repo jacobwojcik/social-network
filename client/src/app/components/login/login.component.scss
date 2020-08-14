@@ -1,0 +1,6 @@
+@import "../../../assets/scss/index";
+
+section {
+  @include displayFlex();
+  height: calc(100vh - 100px);
+}
