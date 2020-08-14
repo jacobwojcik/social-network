@@ -1,14 +1,14 @@
 <section>
-  <form>
+  <form [formGroup]="registerUserData" (ngSubmit)="registerUser()">
     <h1>
       Create your account!
     </h1>
     <h3>Login</h3>
-    <input />
+    <input formControlName="login" />
     <h3>Password</h3>
-    <input />
+    <input formControlName="password" />
     <h3>E-mail</h3>
-    <input />
+    <input formControlName="email" />
     <button type="submit">Submit</button>
   </form>
 </section>
