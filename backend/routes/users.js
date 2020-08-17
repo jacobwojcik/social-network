@@ -62,7 +62,7 @@ router.post("/login", (req, res) => {
       console.log(err);
     } else {
       if (!user) {
-        res.status(401).send("Invalid email");
+        res.status(401).send("Invalid login");
       } else {
         if (user.password !== userData.password) {
           res.status(401).send("Invalid  password");
@@ -87,7 +87,7 @@ router.post("/post", (req, res) => {
     }
   });
 });
-router.get("/posts", async (req, res) => {
+router.get("/posts", verifyToken, async (req, res) => {
   try {
     const posts = await Post.find();
     res.json(posts);

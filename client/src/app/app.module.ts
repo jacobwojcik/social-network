@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,6 +12,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
 import { AuthGuard } from './guards/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,16 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, PostsService, AuthGuard],
+  providers: [
+    AuthService,
+    PostsService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

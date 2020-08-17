@@ -24,7 +24,6 @@ export class LoginComponent {
       },
       (err) => {
         console.log(err);
-        console.log('INVALID DATA');
       }
     );
   }
