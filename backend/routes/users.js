@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const User = require("../models/user");
+const Post = require("../models/post");
 
 require("dotenv").config();
 
@@ -75,8 +76,24 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/feed", (req, res) => {
-  res.send("feed");
+router.post("/post", (req, res) => {
+  let postData = req.body;
+  let post = new Post(postData);
+  post.save((err, newPost) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.status(200).send(newPost);
+    }
+  });
+});
+router.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.json(posts);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

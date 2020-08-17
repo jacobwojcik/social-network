@@ -22,7 +22,10 @@ export class LoginComponent {
         localStorage.setItem('token', res.token);
         this._router.navigate(['/feed']);
       },
-      (err) => console.log(err)
+      (err) => {
+        console.log(err);
+        console.log('INVALID DATA');
+      }
     );
   }
 }

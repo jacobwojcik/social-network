@@ -1,1 +1,14 @@
-<p>feed works!</p>
+<section>
+  <h1>Posts</h1>
+  <div>
+    <ul>
+      <li *ngFor="let post of posts">
+        <h3>
+          {{ post.author }}
+        </h3>
+        <p>{{ post.body }}</p>
+        <small>{{ post.date | date: "medium" }}</small>
+      </li>
+    </ul>
+  </div>
+</section>

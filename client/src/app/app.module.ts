@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { AuthService } from './services/auth.service';
+import { PostsService } from './services/posts.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, PostsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
