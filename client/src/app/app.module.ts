@@ -11,6 +11,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { PostsService } from './services/posts.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, PostsService],
+  providers: [AuthService, PostsService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

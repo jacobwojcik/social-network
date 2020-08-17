@@ -16,4 +16,10 @@ export class AuthService {
   registerUser(user) {
     return this.http.post<any>(this._registerUrl, user);
   }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+  logout() {
+    localStorage.removeItem('token');
+  }
 }

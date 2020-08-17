@@ -3,11 +3,16 @@
     <a routerLink="">YourSocial</a>
   </h1>
   <nav>
-    <li>
+    <li *ngIf="!_auth.loggedIn()">
       <a routerLink="/login" routerLinkActive="active">Login</a>
     </li>
-    <li>
+    <li *ngIf="!_auth.loggedIn()">
       <a routerLink="/register" routerLinkActive="active">Register</a>
+    </li>
+    <li *ngIf="_auth.loggedIn()">
+      <a routerLink="/login" routerLinkActive="active" (click)="_auth.logout()"
+        >Logout</a
+      >
     </li>
   </nav>
 </header>
