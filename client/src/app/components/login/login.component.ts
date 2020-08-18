@@ -13,6 +13,10 @@ export class LoginComponent {
     login: new FormControl(''),
     password: new FormControl(''),
   });
+  loginValidation = {
+    status: false,
+    message: '',
+  };
   constructor(private _auth: AuthService, private _router: Router) {}
 
   loginUser() {
@@ -20,11 +24,13 @@ export class LoginComponent {
       (res) => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', this.loginUserData.value.login);
+        this.loginValidation.status = false;
         this._router.navigate(['/feed']);
       },
       (err) => {
-        console.log(err.error);
-        //TODO ERROR HANDLING
+        const typeOfError = err.error;
+        this.loginValidation.status = true;
+        this.loginValidation.message = typeOfError;
       }
     );
   }

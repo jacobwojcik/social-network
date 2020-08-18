@@ -13,6 +13,11 @@ export class RegisterComponent {
     password: new FormControl(''),
     email: new FormControl(''),
   });
+
+  registerValidation = {
+    status: false,
+    message: '',
+  };
   constructor(private _auth: AuthService, private _router: Router) {}
 
   registerUser() {
@@ -20,7 +25,11 @@ export class RegisterComponent {
       (res) => {
         this._router.navigate(['/login']);
       },
-      (err) => console.log(err)
+      (err) => {
+        this.registerValidation.status = true;
+        this.registerValidation.message = err.error;
+        this.registerUserData.setValue({ login: '', password: '', email: '' });
+      }
     );
   }
 }

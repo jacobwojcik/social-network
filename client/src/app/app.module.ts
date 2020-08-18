@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     RegisterComponent,
     HomepageComponent,
     FeedComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,9 @@
     <li *ngIf="!_auth.loggedIn()">
       <a routerLink="/register" routerLinkActive="active">Register</a>
     </li>
+
+    <h3 *ngIf="_auth.loggedIn()">You are logged as {{ username }}</h3>
+
     <li *ngIf="_auth.loggedIn()">
       <a routerLink="/login" routerLinkActive="active" (click)="_auth.logout()"
         >Logout</a

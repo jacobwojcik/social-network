@@ -9,6 +9,9 @@
     <input formControlName="password" type="password" />
     <h3>E-mail</h3>
     <input formControlName="email" type="email" />
+    <small *ngIf="registerValidation.status">{{
+      registerValidation.message
+    }}</small>
     <button type="submit">Submit</button>
   </form>
 </section>

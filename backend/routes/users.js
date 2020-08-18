@@ -45,6 +45,14 @@ router.get("/", (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
+    const checkUser = await User.findOne({ login: req.body.login });
+    const checkEmail = await User.findOne({ email: req.body.email });
+    if (checkUser != null) {
+      res.status(403).send("Login is already taken. Try another one!");
+    }
+    if (checkEmail != null) {
+      res.status(403).send("Account with that email already exists");
+    }
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const userData = {
       login: req.body.login,
