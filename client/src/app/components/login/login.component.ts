@@ -18,7 +18,6 @@ export class LoginComponent {
   loginUser() {
     this._auth.loginUser(this.loginUserData.value).subscribe(
       (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         this._router.navigate(['/feed']);
       },

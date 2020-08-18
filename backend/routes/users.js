@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const Post = require("../models/post");
@@ -42,38 +43,43 @@ router.get("/", (req, res) => {
   res.send("Respond from users ROUTE");
 });
 
-router.post("/register", (req, res) => {
-  let userData = req.body;
-  let user = new User(userData);
-
-  user.save((err, registeredUser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.status(200).send(registeredUser);
-    }
-  });
+router.post("/register", async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const userData = {
+      login: req.body.login,
+      password: hashedPassword,
+      email: req.body.email,
+    };
+    let user = new User(userData);
+    const registeredUser = await user.save();
+    res.status(200).send(registeredUser);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.post("/login", (req, res) => {
-  let userData = req.body;
-  User.findOne({ login: userData.login }, (err, user) => {
-    if (err) {
-      console.log(err);
-    } else {
-      if (!user) {
-        res.status(401).send("Invalid login");
+router.post("/login", async (req, res) => {
+  const userData = req.body;
+  try {
+    const user = await User.findOne({ login: userData.login }, (err, user) => {
+      if (err) {
+        console.log(err);
       } else {
-        if (user.password !== userData.password) {
-          res.status(401).send("Invalid  password");
-        } else {
+        if (!user) {
+          res.status(401).send("Invalid login");
+        } else if (bcrypt.compare(userData.password, user.password)) {
           let payload = { subject: user._id };
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });
+        } else {
+          res.status(401).send("Invalid  password");
         }
       }
-    }
-  });
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post("/post", (req, res) => {

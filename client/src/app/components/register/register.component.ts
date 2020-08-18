@@ -18,7 +18,6 @@ export class RegisterComponent {
   registerUser() {
     this._auth.registerUser(this.registerUserData.value).subscribe(
       (res) => {
-        console.log(res);
         this._router.navigate(['/login']);
       },
       (err) => console.log(err)
