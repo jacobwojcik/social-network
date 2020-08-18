@@ -51,7 +51,7 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
       email: req.body.email,
     };
-    let user = new User(userData);
+    const user = new User(userData);
     const registeredUser = await user.save();
     res.status(200).send(registeredUser);
   } catch (err) {
@@ -62,37 +62,33 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const userData = req.body;
   try {
-    const user = await User.findOne({ login: userData.login }, (err, user) => {
-      if (err) {
-        console.log(err);
-      } else {
-        if (!user) {
-          res.status(401).send("Invalid login");
-        } else if (bcrypt.compare(userData.password, user.password)) {
-          let payload = { subject: user._id };
-          let token = jwt.sign(payload, "secretKey");
-          res.status(200).send({ token });
-        } else {
-          res.status(401).send("Invalid  password");
-        }
-      }
-    });
+    const user = await User.findOne({ login: userData.login });
+    if (user == null) {
+      res.status(401).send("Invalid login");
+    }
+    if (await bcrypt.compare(userData.password, user.password)) {
+      let payload = { subject: user._id };
+      let token = jwt.sign(payload, "secretKey");
+      res.status(200).send({ token });
+    } else {
+      res.status(401).send("Invalid  password");
+    }
   } catch (err) {
     console.log(err);
   }
 });
 
-router.post("/post", (req, res) => {
-  let postData = req.body;
-  let post = new Post(postData);
-  post.save((err, newPost) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.status(200).send(newPost);
-    }
-  });
+router.post("/post", async (req, res) => {
+  const postData = req.body;
+  const post = new Post(postData);
+  try {
+    const newPost = await post.save();
+    res.status(200).send(newPost);
+  } catch (err) {
+    console.log(err);
+  }
 });
+
 router.get("/posts", verifyToken, async (req, res) => {
   try {
     const posts = await Post.find();

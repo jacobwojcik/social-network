@@ -5,15 +5,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PostsService {
-  private postUrl = 'http://localhost:3000/post';
-  private postsUrl = 'http://localhost:3000/posts';
+  private _postUrl = 'http://localhost:3000/post';
+  private _postsUrl = 'http://localhost:3000/posts';
 
   constructor(private http: HttpClient) {}
 
-  newPost() {
-    console.log('New post');
+  newPost(post) {
+    return this.http.post<any>(this._postUrl, post);
   }
   getPosts(): Observable<any[]> {
-    return this.http.get<any[]>(this.postsUrl);
+    return this.http.get<any[]>(this._postsUrl);
   }
 }
