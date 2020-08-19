@@ -43,12 +43,12 @@ export class FeedComponent implements OnInit {
     );
   }
   createPost() {
+    this.newPost.patchValue({
+      date: Date.now(),
+    });
     this._posts.newPost(this.newPost.value).subscribe(
       (res) => {
-        this.newPost.patchValue({
-          date: Date.now(),
-        }),
-          this.posts.push(this.newPost.value);
+        this.posts.push(this.newPost.value);
         this.newPost.patchValue({
           body: '',
         });

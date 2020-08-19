@@ -1,4 +1,61 @@
+@import "../../../assets/scss/index";
+
 section {
   height: calc(100vh - 100px);
-  background-color: rgb(205, 155, 235);
+  background-image: url(../../../assets/images/background.png);
+  color: white;
+  @include displayFlex();
+  flex-flow: column;
+  div {
+    height: 80%;
+    width: 768px;
+    @include displayFlex();
+    flex-flow: column;
+    justify-content: center;
+    h1 {
+      font-size: 60px;
+      color: yellow;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 25px;
+    }
+    button {
+      cursor: pointer;
+      position: relative;
+      margin: 1em;
+      padding: 1em 4em;
+      border: 4px solid white;
+      border-radius: 50px;
+      background-color: transparent;
+      outline: none;
+      color: white;
+      font-size: 30px;
+      z-index: 1;
+      font-weight: bold;
+      transition: 250ms ease-in-out;
+      &:hover::before {
+        transform: scaleX(1);
+      }
+      &:hover {
+        color: purple;
+      }
+    }
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      background-color: white;
+      border-radius: 50px;
+      transform: scaleX(0);
+      // transform-origin: left;
+      transition: 250ms ease-in-out;
+    }
+  }
 }

@@ -4,18 +4,16 @@
   </h1>
   <nav>
     <li *ngIf="!_auth.loggedIn()">
-      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register">Register</a>
     </li>
-    <li *ngIf="!_auth.loggedIn()">
-      <a routerLink="/register" routerLinkActive="active">Register</a>
+    <li *ngIf="!_auth.loggedIn()" class="login">
+      <a routerLink="/login">Login</a>
     </li>
 
     <h3 *ngIf="_auth.loggedIn()">You are logged as {{ username }}</h3>
 
     <li *ngIf="_auth.loggedIn()">
-      <a routerLink="/login" routerLinkActive="active" (click)="_auth.logout()"
-        >Logout</a
-      >
+      <a routerLink="/login" (click)="_auth.logout()">Logout</a>
     </li>
   </nav>
 </header>

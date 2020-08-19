@@ -3,15 +3,29 @@
     <h1>
       Create your account!
     </h1>
-    <h3>Login</h3>
-    <input formControlName="login" />
-    <h3>Password</h3>
-    <input formControlName="password" type="password" />
-    <h3>E-mail</h3>
-    <input formControlName="email" type="email" />
-    <small *ngIf="registerValidation.status">{{
-      registerValidation.message
-    }}</small>
-    <button type="submit">Submit</button>
+    <div>
+      <input formControlName="login" required />
+      <label>Login</label>
+    </div>
+    <div>
+      <input formControlName="password" type="password" required />
+      <label>Password</label>
+    </div>
+    <div>
+      <input formControlName="email" type="email" required />
+      <label>Email</label>
+    </div>
+    <div>
+      <small *ngIf="registerValidation.status">{{
+        registerValidation.message
+      }}</small>
+      <button
+        type="submit"
+        [class.is-disabled]="!registerUserData.valid"
+        [disabled]="!registerUserData.valid"
+      >
+        Submit
+      </button>
+    </div>
   </form>
 </section>

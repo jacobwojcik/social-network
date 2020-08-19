@@ -4,3 +4,7 @@ section {
   @include displayFlex();
   height: calc(100vh - 100px);
 }
+.is-disabled {
+  cursor: default;
+  opacity: 0.5;
+}
