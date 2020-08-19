@@ -1,16 +1,21 @@
 <section>
   <div>
-    <h1>Create new post</h1>
-    <form [formGroup]="newPost" (ngSubmit)="createPost()">
-      <input formControlName="body" placeholder="your post" />
-      <button type="submit">Send</button>
-    </form>
+    <div class="post">
+      <h1>Create new post</h1>
+      <form [formGroup]="newPost" (ngSubmit)="createPost()">
+        <textarea formControlName="body" placeholder="What's up?"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div class="feed">
+      <h1>Posts</h1>
+      <ul>
+        <app-post
+          *ngFor="let post of posts.slice().reverse(); let i = index"
+          [post]="post"
+        >
+        </app-post>
+      </ul>
+    </div>
   </div>
-  <h1>Posts</h1>
-  <ul>
-    <app-post
-      *ngFor="let post of posts.slice().reverse(); let i = index"
-      [post]="post"
-    ></app-post>
-  </ul>
 </section>

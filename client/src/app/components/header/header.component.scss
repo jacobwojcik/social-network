@@ -5,7 +5,7 @@ header {
   justify-content: space-between;
   padding: 1em;
   height: 100px;
-  background-color: rgb(189, 29, 167);
+  background-color: $primaryCol;
   color: white;
   nav {
     @include displayFlex();

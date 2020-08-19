@@ -1,18 +1,58 @@
 @import "../../../assets/scss/index";
 section {
   padding: 1em;
+  width: 100%;
+  @include displayFlex();
+  flex-flow: column;
   div {
+    @include displayFlex();
+    flex-flow: column;
+    max-width: 800px;
+    width: 90%;
+  }
+}
+.post {
+  background-color: rgb(213, 54, 228);
+  padding: 1em;
+  h1 {
+    color: white;
+  }
+  form {
+    padding: 1em;
+    border-radius: none;
+    background-color: inherit;
     width: 100%;
     @include displayFlex();
     flex-flow: column;
-    form {
-      width: 100%;
+    textarea {
+      padding: 0.5em;
+      font-size: 20px;
+
+      outline: none;
+      resize: none;
+      width: 80%;
+      height: 100px;
+    }
+    button {
+      cursor: pointer;
+      margin: 20px 0 0 0;
+      padding: 1em 3em;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: white;
+      color: $primaryCol;
+      border-radius: 30px;
+      border: none;
     }
   }
+}
+.feed {
+  width: 100%;
+  border: 2px solid $primaryCol;
+  padding: 1em 0;
+  color: $primaryCol;
+
   ul {
     list-style: none;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
   }
 }
