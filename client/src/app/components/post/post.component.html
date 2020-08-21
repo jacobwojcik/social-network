@@ -2,6 +2,8 @@
   <h3>
     {{ post.author }}
   </h3>
-  <p>{{ post.body }}</p>
-  <small>{{ post.date | date: "medium" }}</small>
+  <small>{{ post.date | date: "short" }}</small>
+  <div>
+    <p>{{ post.body }}</p>
+  </div>
 </li>

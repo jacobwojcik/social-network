@@ -5,11 +5,20 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginRegisterGuard } from './guards/login-register.guard';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginRegisterGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [LoginRegisterGuard],
+  },
   { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
 ];
 

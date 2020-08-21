@@ -4,18 +4,24 @@
       Sign in to your acount
     </h1>
     <div>
-      <input formControlName="login" required="required" />
+      <input formControlName="login" required />
       <label>Login</label>
     </div>
     <div>
-      <input formControlName="password" type="password" required="required" />
+      <input formControlName="password" type="password" required />
       <label>Password</label>
     </div>
     <div>
       <small *ngIf="loginValidation.status">{{
         loginValidation.message
       }}</small>
-      <button type="submit">Submit</button>
+      <button
+        [class.is-disabled]="!loginUserData.valid"
+        [disabled]="!loginUserData.valid"
+        type="submit"
+      >
+        Submit
+      </button>
     </div>
   </form>
 </section>

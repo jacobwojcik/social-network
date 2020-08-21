@@ -12,8 +12,10 @@ import { FeedComponent } from './components/feed/feed.component';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginRegisterGuard } from './guards/login-register.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { PostComponent } from './components/post/post.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { PostComponent } from './components/post/post.component';
     HomepageComponent,
     FeedComponent,
     PostComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { PostComponent } from './components/post/post.component';
     AuthService,
     PostsService,
     AuthGuard,
+    LoginRegisterGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

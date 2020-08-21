@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginUserData = new FormGroup({
-    login: new FormControl(''),
-    password: new FormControl(''),
+    login: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
   loginValidation = {
     status: false,

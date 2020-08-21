@@ -1,0 +1,11 @@
+@import "../../../assets/scss/index";
+footer {
+  background-color: $primaryCol;
+  padding: 2em 1em;
+  @include displayFlex();
+  color: white;
+  div {
+    @include displayFlex();
+    flex-flow: column;
+  }
+}
