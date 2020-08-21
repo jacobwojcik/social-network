@@ -7,11 +7,18 @@
       <small>{{ post.date | date: "short" }}</small>
     </div>
     <div *ngIf="post.author == username" class="options">
-      <button (click)="editPost()">EDIT</button>
+      <button (click)="editOnClick()">EDIT</button>
       <button (click)="deleteThisPost()">DELETE</button>
     </div>
   </div>
-  <div class="post-body">
+  <div *ngIf="!isEditorOpen" class="post-body">
     <p>{{ post.body }}</p>
+  </div>
+  <div *ngIf="isEditorOpen" class="post-body">
+    <textarea
+      >{{ post.body }}
+    </textarea>
+    <button (click)="editThisPost()">Save</button>
+    <button (click)="editOnClick()">Cancel</button>
   </div>
 </li>

@@ -46,6 +46,27 @@ li {
     &:hover {
       transform: translateY(-3px);
     }
+    textarea {
+      min-height: 100px;
+      height: 100%;
+      width: 100%;
+      padding: 0.5em;
+
+      border: 2px solid $primaryCol;
+      background-color: rgba(206, 10, 255, 0.116);
+      outline: none;
+      resize: none;
+    }
+    button {
+      cursor: pointer;
+      outline: none;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      padding: 10px;
+      background-color: blue;
+      color: white;
+    }
   }
 }
 
