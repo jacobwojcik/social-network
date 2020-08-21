@@ -26,3 +26,9 @@ header {
 .active {
   color: rgb(216, 204, 203);
 }
+
+@media screen and (max-width: 768px) {
+  .register {
+    display: none;
+  }
+}
