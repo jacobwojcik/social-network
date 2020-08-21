@@ -60,7 +60,7 @@ router.post("/register", async (req, res) => {
       };
       const user = new User(userData);
       const registeredUser = await user.save();
-      res.status(200).send(registeredUser);
+      res.status(200).send("REGISTERED");
     }
   } catch (err) {
     console.log(err);
@@ -101,6 +101,31 @@ router.get("/posts", verifyToken, async (req, res) => {
   try {
     const posts = await Post.find();
     res.json(posts);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.put("/update/:id", async (req, res) => {
+  const postToUpdate = req.body.body;
+  try {
+    const post = await Post.findByIdAndUpdate(
+      { _id: req.params.id },
+      { body: postToUpdate },
+      { useFindAndModify: false }
+    );
+    res.send("UPDATED");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  const postToDelete = req.params.id;
+  try {
+    const post = await Post.findById({ _id: postToDelete });
+    const deletePost = await post.delete();
+    res.status(200).send(deletePost);
   } catch (err) {
     console.log(err);
   }

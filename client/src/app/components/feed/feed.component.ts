@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class FeedComponent implements OnInit {
   public posts: any = [];
-  public username: string = '';
+  public username: string = 'JonDoe';
 
   newPost = new FormGroup({
     author: new FormControl(this.username),
