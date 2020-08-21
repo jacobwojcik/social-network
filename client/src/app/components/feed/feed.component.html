@@ -1,5 +1,8 @@
 <section>
   <div>
+    <div>
+      <h2>Hello {{ username }}!</h2>
+    </div>
     <div class="post">
       <h1>Create new post</h1>
       <form [formGroup]="newPost" (ngSubmit)="createPost()">
@@ -13,6 +16,7 @@
         <app-post
           *ngFor="let post of posts.slice().reverse(); let i = index"
           [post]="post"
+          [username]="username"
         >
         </app-post>
       </ul>

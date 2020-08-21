@@ -6,8 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
+  @Input() username: string;
   @Input() post: any;
   constructor() {}
 
   ngOnInit(): void {}
+
+  editPost() {
+    console.log('edit');
+  }
+  deletePost() {
+    console.log('delete');
+  }
 }

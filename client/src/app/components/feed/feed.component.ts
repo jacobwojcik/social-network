@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ɵangular_packages_router_router_h } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class FeedComponent implements OnInit {
   public posts: any = [];
-  public username = localStorage.getItem('username');
+  public username: string = '';
 
   newPost = new FormGroup({
     author: new FormControl(this.username),
@@ -28,7 +28,7 @@ export class FeedComponent implements OnInit {
   constructor(
     private _posts: PostsService,
     private router: Router,
-    private _auth: AuthService
+    public _auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class FeedComponent implements OnInit {
         }
       }
     );
+    this.username = this._auth.userName;
   }
   createPost() {
     this.newPost.patchValue({

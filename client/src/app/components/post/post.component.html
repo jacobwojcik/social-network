@@ -1,9 +1,17 @@
 <li>
-  <h3>
-    {{ post.author }}
-  </h3>
-  <small>{{ post.date | date: "short" }}</small>
-  <div>
+  <div class="details">
+    <div>
+      <h3>
+        {{ post.author }}
+      </h3>
+      <small>{{ post.date | date: "short" }}</small>
+    </div>
+    <div *ngIf="post.author === username" class="options">
+      <button (click)="editPost()">EDIT</button>
+      <button (click)="deletePost()">DELETE</button>
+    </div>
+  </div>
+  <div class="post-body">
     <p>{{ post.body }}</p>
   </div>
 </li>

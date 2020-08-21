@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   loginUser(user) {
+    this.userName = user.login;
     return this.http.post<any>(this._loginUrl, user);
   }
   registerUser(user) {

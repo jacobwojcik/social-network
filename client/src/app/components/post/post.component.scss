@@ -1,12 +1,59 @@
+@import "../../../assets/scss/index";
+
 li {
   padding: 1em;
 
   margin: 1em 0;
   width: 100%;
-  div {
+  animation: slideLeft 700ms;
+  .details {
+    @include displayFlex();
+    justify-content: space-between;
+    padding: 0 1em;
+    transition: 600ms;
+    &:hover {
+      .options {
+        @include displayFlex();
+        opacity: 1;
+      }
+    }
+  }
+  .options {
+    width: 30%;
+    display: none;
+    opacity: 0;
+    transition: 600ms;
+    button {
+      cursor: pointer;
+      outline: none;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      padding: 10px;
+      background-color: red;
+      color: white;
+    }
+  }
+  .post-body {
+    margin: 5px 0;
     padding: 1.5em 1em;
-    border: 2px solid silver;
+    border: 1px solid silver;
     border-radius: 30px;
     width: 100%;
+    transition: 200ms ease-in-out;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

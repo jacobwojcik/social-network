@@ -27,7 +27,7 @@ section {
     textarea {
       padding: 0.5em;
       font-size: 20px;
-
+      border-radius: 25px;
       outline: none;
       resize: none;
       width: 90%;
@@ -40,6 +40,7 @@ section {
       font-size: 16px;
       font-weight: bold;
       background-color: white;
+      outline: none;
       color: $primaryCol;
       border-radius: 30px;
       border: none;
@@ -51,6 +52,7 @@ section {
   border: 2px solid $primaryCol;
   padding: 1em 0;
   color: $primaryCol;
+  min-height: 90vh;
 
   ul {
     list-style: none;
