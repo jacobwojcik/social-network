@@ -17,6 +17,7 @@
           *ngFor="let post of posts.slice().reverse(); let i = index"
           [post]="post"
           [username]="username"
+          (deletePost)="deletePost(post)"
         >
         </app-post>
       </ul>

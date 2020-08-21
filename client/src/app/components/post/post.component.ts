@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-post',
@@ -8,14 +9,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PostComponent implements OnInit {
   @Input() username: string;
   @Input() post: any;
-  constructor() {}
+  @Output('deletePost') deletePost: EventEmitter<any> = new EventEmitter();
+  constructor(private _post: PostsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = 'JonDoe';
+  }
 
   editPost() {
     console.log('edit');
   }
-  deletePost() {
-    console.log('delete');
+  deleteThisPost() {
+    this.deletePost.emit(this.post);
   }
 }

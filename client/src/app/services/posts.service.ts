@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 export class PostsService {
   private _postUrl = 'http://localhost:3000/post';
   private _postsUrl = 'http://localhost:3000/posts';
+  private _postDelete = 'http://localhost:3000/delete/';
 
   constructor(private http: HttpClient) {}
 
@@ -15,5 +16,8 @@ export class PostsService {
   }
   getPosts(): Observable<any[]> {
     return this.http.get<any[]>(this._postsUrl);
+  }
+  deletePost(post) {
+    return this.http.delete<any>(this._postDelete + post);
   }
 }
