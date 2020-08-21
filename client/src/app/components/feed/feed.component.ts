@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class FeedComponent implements OnInit {
   public posts: any = [];
-  public username: string = 'JonDoe';
+  public username: string = localStorage.getItem('username');
 
   newPost = new FormGroup({
     author: new FormControl(this.username),
@@ -41,7 +41,6 @@ export class FeedComponent implements OnInit {
         }
       }
     );
-    this.username = this._auth.userName;
   }
   createPost() {
     this.newPost.patchValue({
@@ -58,9 +57,10 @@ export class FeedComponent implements OnInit {
     );
   }
   deletePost(post) {
-    this._posts.deletePost(post._id).subscribe(
+    this._posts.deletePost(post).subscribe(
       (res) => {
         this.posts = this.posts.filter((e) => e._id !== post._id);
+        this.posts = this.posts.filter((e) => e.body !== post.body);
       },
       (err) => console.log(err)
     );

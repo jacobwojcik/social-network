@@ -7,11 +7,10 @@ export class AuthService {
   //for sake of developing request to local server
   private _registerUrl = 'http://localhost:3000/register';
   private _loginUrl = 'http://localhost:3000/login';
-  public userName = '';
+
   constructor(private http: HttpClient) {}
 
   loginUser(user) {
-    this.userName = user.login;
     return this.http.post<any>(this._loginUrl, user);
   }
   registerUser(user) {
@@ -22,6 +21,7 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
   getToken() {
     return localStorage.getItem('token');

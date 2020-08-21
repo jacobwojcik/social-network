@@ -12,10 +12,10 @@ section {
   }
 }
 .post {
-  background-color: rgb(213, 54, 228);
+  background-color: white;
   padding: 1em;
   h1 {
-    color: white;
+    color: $primaryCol;
   }
   form {
     padding: 1em;
@@ -27,7 +27,10 @@ section {
     textarea {
       padding: 0.5em;
       font-size: 20px;
-      border-radius: 25px;
+      // border-radius: 25px;
+      border: none;
+      border-bottom: 2px solid $primaryCol;
+      background-color: rgba(206, 10, 255, 0.116);
       outline: none;
       resize: none;
       width: 90%;
@@ -36,12 +39,12 @@ section {
     button {
       cursor: pointer;
       margin: 20px 0 0 0;
-      padding: 1em 3em;
-      font-size: 16px;
+      padding: 0.5em 2em;
+      font-size: 20px;
       font-weight: bold;
-      background-color: white;
+      background-color: $primaryCol;
       outline: none;
-      color: $primaryCol;
+      color: white;
       border-radius: 30px;
       border: none;
     }
@@ -49,7 +52,7 @@ section {
 }
 .feed {
   width: 100%;
-  border: 2px solid $primaryCol;
+  // border: 2px solid $primaryCol;
   padding: 1em 0;
   color: $primaryCol;
   min-height: 90vh;

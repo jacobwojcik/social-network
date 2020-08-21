@@ -60,7 +60,7 @@ router.post("/register", async (req, res) => {
       };
       const user = new User(userData);
       const registeredUser = await user.save();
-      res.status(200).send("REGISTERED");
+      res.status(200).send(registeredUser);
     }
   } catch (err) {
     console.log(err);

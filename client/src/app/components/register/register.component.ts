@@ -27,6 +27,7 @@ export class RegisterComponent {
         this._router.navigate(['/login']);
       },
       (err) => {
+        console.log(err);
         this.registerValidation.status = true;
         this.registerValidation.message = err.error;
         this.registerUserData.setValue({ login: '', password: '', email: '' });

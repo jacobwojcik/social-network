@@ -6,7 +6,7 @@
       </h3>
       <small>{{ post.date | date: "short" }}</small>
     </div>
-    <div *ngIf="post.author === username" class="options">
+    <div *ngIf="post.author == username" class="options">
       <button (click)="editPost()">EDIT</button>
       <button (click)="deleteThisPost()">DELETE</button>
     </div>

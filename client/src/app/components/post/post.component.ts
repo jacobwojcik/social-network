@@ -7,14 +7,12 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  @Input() username: string;
+  public username: string = localStorage.getItem('username');
   @Input() post: any;
   @Output('deletePost') deletePost: EventEmitter<any> = new EventEmitter();
   constructor(private _post: PostsService) {}
 
-  ngOnInit(): void {
-    this.username = 'JonDoe';
-  }
+  ngOnInit(): void {}
 
   editPost() {
     console.log('edit');

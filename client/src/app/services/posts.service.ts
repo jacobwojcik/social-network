@@ -18,6 +18,6 @@ export class PostsService {
     return this.http.get<any[]>(this._postsUrl);
   }
   deletePost(post) {
-    return this.http.delete<any>(this._postDelete + post);
+    return this.http.delete<any>(this._postDelete + post._id);
   }
 }

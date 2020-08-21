@@ -24,6 +24,7 @@ export class LoginComponent {
     this._auth.loginUser(this.loginUserData.value).subscribe(
       (res) => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('username', this.loginUserData.value.login);
         this.loginValidation.status = false;
         this._router.navigate(['/feed']);
       },
