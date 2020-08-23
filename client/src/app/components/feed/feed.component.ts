@@ -59,6 +59,10 @@ export class FeedComponent implements OnInit {
 
   editPost(post) {
     console.log(post);
+    this._posts.updatePost(post).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
   deletePost(post) {
     this._posts.deletePost(post).subscribe(

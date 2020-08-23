@@ -107,6 +107,7 @@ router.get("/posts", verifyToken, async (req, res) => {
 });
 
 router.put("/update/:id", async (req, res) => {
+  console.log(req.body);
   const postToUpdate = req.body.body;
   try {
     const post = await Post.findByIdAndUpdate(
@@ -114,7 +115,7 @@ router.put("/update/:id", async (req, res) => {
       { body: postToUpdate },
       { useFindAndModify: false }
     );
-    res.send("UPDATED");
+    res.send(post);
   } catch (err) {
     console.log(err);
   }

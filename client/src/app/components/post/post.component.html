@@ -15,10 +15,11 @@
     <p>{{ post.body }}</p>
   </div>
   <div *ngIf="isEditorOpen" class="post-body">
-    <textarea
-      >{{ post.body }}
-    </textarea>
+    <form>
+      <textarea name="editedPost" [(ngModel)]="editedPost"> </textarea>
+    </form>
+
     <button (click)="editThisPost()">Save</button>
-    <button (click)="editOnClick()">Cancel</button>
+    <button (click)="cancelEditing()">Cancel</button>
   </div>
 </li>
