@@ -1,22 +1,30 @@
 @import "../../../assets/scss/index";
 
 header {
-  @include displayFlex();
-  justify-content: space-between;
-  padding: 1em;
-  height: 100px;
   background-color: $primaryCol;
-  color: white;
-  nav {
+  width: 100%;
+  div {
     @include displayFlex();
-    width: 50%;
-    list-style: none;
-    li {
-      font-size: 25px;
-      padding: 0.5em 1em;
-      border-radius: 30px;
+    justify-content: space-between;
+    padding: 1em;
+    height: 100px;
+    background-color: transparent;
+    color: white;
+    nav {
+      @include displayFlex();
+      width: 50%;
+      list-style: none;
+      li {
+        font-size: 25px;
+        padding: 0.5em 1em;
+        border-radius: 30px;
+      }
     }
   }
+}
+.header-fixed {
+  position: fixed;
+  background-color: transparent;
 }
 .login {
   background-color: white;

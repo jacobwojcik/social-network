@@ -1,17 +1,19 @@
-<header>
-  <h1>
-    <a routerLink="feed">YourSocial</a>
-  </h1>
-  <nav>
-    <li *ngIf="!_auth.loggedIn()" class="register">
-      <a routerLink="/register">Register</a>
-    </li>
-    <li *ngIf="!_auth.loggedIn()" class="login">
-      <a routerLink="/login">Login</a>
-    </li>
+<header [class.header-fixed]="href === '/'">
+  <div>
+    <h1>
+      <a routerLink="feed">YourSocial</a>
+    </h1>
+    <nav>
+      <li *ngIf="!_auth.loggedIn()" class="register">
+        <a routerLink="/register">Register</a>
+      </li>
+      <li *ngIf="!_auth.loggedIn()" class="login">
+        <a routerLink="/login">Login</a>
+      </li>
 
-    <li *ngIf="_auth.loggedIn()">
-      <a routerLink="/login" (click)="_auth.logout()">Logout</a>
-    </li>
-  </nav>
+      <li *ngIf="_auth.loggedIn()">
+        <a routerLink="/login" (click)="_auth.logout()">Logout</a>
+      </li>
+    </nav>
+  </div>
 </header>

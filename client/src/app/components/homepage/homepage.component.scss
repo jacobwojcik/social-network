@@ -1,7 +1,7 @@
 @import "../../../assets/scss/index";
 
 section {
-  height: calc(100vh - 100px);
+  height: 100vh;
   background-image: url(../../../assets/images/background.png);
   color: white;
   @include displayFlex();
