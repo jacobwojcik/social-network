@@ -1,5 +1,5 @@
 # Social network project
 
-### Work in progress
+![](readme/social-network.gif)
 
 ##### MEAN STACK
